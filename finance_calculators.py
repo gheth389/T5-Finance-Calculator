@@ -4,13 +4,13 @@ return on an investment or the monthly repayment amount for a home loan.'''
 
 import math
 
-# Display options for the user to ask them to choose a calculator
+# Display options for the user and ask them to choose a calculator
 print ('''Investment - to calculate the amount of interest you'll earn on your investment
 Bond       - to calculate the amount you'll have to pay on a home loan
 ''')
 
-calculator_type = input("Enter either 'investment' or 'bond' from the menu above to proceed: ")
-calculator_type = calculator_type.lower() # Convert user entry to lower to account for capitalisation
+calculator_type = input("Enter either 'investment' or 'bond' from the menu above to proceed: ")\
+    .lower()
 
 # When investment is selected
 if calculator_type == "investment":
@@ -19,7 +19,7 @@ if calculator_type == "investment":
     # Ask user for Loan details
     deposit_amount = float(input("Enter the Deposit Amount: "))
     interest_rate = float(input("What is the Interest Rate as %: "))
-    interest_rate = (interest_rate/100) #convert into decimal %
+    interest_rate = interest_rate/100 #convert into decimal %
     investment_years =  int(input("Over how any Years? "))
 
     # User input and convert to lower case for error checking
@@ -46,11 +46,12 @@ elif calculator_type == "bond":
      # Ask user for bond details
     current_value_of_house = int(input("Enter Current House Value: "))
     monthly_interest_rate = float(input("What is the Interest Rate: "))
-    monthly_interest_rate = ((monthly_interest_rate/100)/12) #convert into decimal % then to monthly
+    monthly_interest_rate = (monthly_interest_rate/100)/12 #convert into decimal % then to monthly
     num_months =  int(input("Over how any Months? "))
 
     # Bond calculation
-    monthly_user_payment = (monthly_interest_rate*current_value_of_house)/(1-(1+monthly_interest_rate)**(-num_months))
+    monthly_user_payment = \
+        (monthly_interest_rate*current_value_of_house)/(1-(1+monthly_interest_rate)**(-num_months))
     print (f"Your monthly repayment will be £{monthly_user_payment:.2f}.")
 
 # Return if user didn't enter either investment or bond
